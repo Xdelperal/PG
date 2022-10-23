@@ -8,24 +8,28 @@ import java.util.Scanner;
 
 /**
  *
- * @author alumne_1r
+ * @author delpe
  */
-public class Ejercicio_13 {
+public class Ejercicio_Division {
 
-    private static final String MSG_1 = "El resultado es  ";
+    private static final String MSG_1 = "El resultado  ";
     private static final String MSG_2 = "Introduce 2 valores: ";
 
     public static void main(String[] args) {
 
         System.out.println(MSG_2);
         System.out.println("");
-        float num1, num2;
+        int cont, num1 = 0, num2;
 
         Scanner numteclado = new Scanner(System.in);
 
-        num1 = numteclado.nextFloat();
-        num2 = numteclado.nextFloat();
+        for (cont = 0; cont < 2; cont++) {
 
-        System.out.println(MSG_1 + (num1 / num2));
+            num2 = numteclado.nextInt();
+
+        }
+
+        System.out.println(MSG_1 + (num1 / cont));
     }
+
 }
