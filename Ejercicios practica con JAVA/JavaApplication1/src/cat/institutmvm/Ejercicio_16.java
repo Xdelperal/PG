@@ -26,13 +26,16 @@ public class Ejercicio_16 {
 
         num = numteclado.nextInt();
 
-        while (num < 0 && att >1) {att--;System.out.println(MSG_2 + att + " intentos");num = numteclado.nextInt();
-       }
-        
-        if(att == 1 ){
+        while (num < 0 && att > 1) {
+            att--;
+            System.out.println(MSG_2 + att + " intentos");
+            num = numteclado.nextInt();
+        }
+
+        if (att == 1) {
             System.out.println(MSG_4);
-        } 
-        if (num > 0 ){
+        }
+        if (num > 0) {
             System.out.println(MSG_3);
         }
     }
