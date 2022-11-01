@@ -10,6 +10,15 @@ import java.util.Scanner;
  *
  * @author delpe
  */
+
+/*
+ * Nom: Xavier 
+ * Cognom: Del Peral
+ * INS Manuel Vázquez Montalbán
+ * Data d'Edicio 31/10/2022 1:17
+ * Nom del cicle formatiu: DAW
+ * Nom del modul: PG
+ */
 public class Ejercicio8b {
         private static final String MSG_1 = "Indica cuantos numeros quieres introducir:  ";
         private static final String MSG_2 = "Introduce un numero entero: ";
