@@ -19,6 +19,7 @@ import java.util.Scanner;
  * Nom del cicle formatiu: DAW
  * Nom del modul: PG
  */
+
 public class Ejercicio6_b {
 
     private static final String MSG_1 = "Introduce el numero del mes para saber cuantos dias tiene: ";
@@ -96,9 +97,9 @@ public class Ejercicio6_b {
             case 2:
                 mes = "Febrero";
                 if (num2 % 4 == 0 || num2 % 400 == 0) {
-                    dias = 28;
-                } else {
                     dias = 29;
+                } else {
+                    dias = 28;
                 }
                 break;
 
