@@ -26,63 +26,36 @@ public class Sorteo {
         boolean correcte;
         double imp;
 
-         Scanner scn = new Scanner(System.in);
-        do{
-       
+        Scanner scn = new Scanner(System.in);
+        do {
+
             if (cont < 3 && id < 111 || id > 999) {
 
                 System.out.println(MSG_1);
                 correcte = scn.hasNextInt();
                 if (correcte) {
                     id = scn.nextInt();
-                    
+
                     if (id < 111 || id > 999) {
                         System.out.println(MSG_6);
+                        id = 0;
+
 
                     }
                 } else {
                     scn.next();
                     System.out.println(MSG_6);
+                    id = 0;
+
 
                 }
                 cont++;
-                if (cont==3 &&id < 111 || id > 999 ){
+                if (cont == 3 && id < 111 || id > 999) {
                     System.out.println(MSG_7);
                 }
             }
-           
-            }while(cont < 3 && id < 111 || id > 999);
-       
-    
-      do{
-       
-            if (cont < 3 && id < 111 || id > 999) {
 
-                System.out.println(MSG_1);
-                correcte = scn.hasNextInt();
-                if (correcte) {
-                    id = scn.nextInt();
-                    
-                    if (id < 111 || id > 999) {
-                        System.out.println(MSG_6);
-
-                    }
-                } else {
-                    scn.next();
-                    System.out.println(MSG_6);
-
-                }
-                cont++;
-                if (cont==3 &&id < 111 || id > 999 ){
-                    System.out.println(MSG_7);
-                }
-            }
-           
-            }while(cont < 3 && id < 111 || id > 999);
-    
-    
-    
-    
-    
+        } while (cont < 3 && id < 111 || id > 999);
     }
-   }
+
+}
