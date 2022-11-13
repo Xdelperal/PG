@@ -22,7 +22,7 @@ public class Sorteo {
 
     public static void main(String[] args) {
 
-        int id = 0, edat, tlfn, tipo, cont = 0;
+        int id = 0, edat=0, tlfn, tipo, cont = 0;
         boolean correcte;
         double imp;
 
@@ -46,7 +46,7 @@ public class Sorteo {
                     scn.next();
                     System.out.println(MSG_6);
                     id = 0;
-
+                    cont = 0;
 
                 }
                 cont++;
@@ -56,6 +56,41 @@ public class Sorteo {
             }
 
         } while (cont < 3 && id < 111 || id > 999);
+    
+        
+        scn.next();
+        do {
+
+            if (cont < 3 && edat < 14 || edat > 120) {
+
+                System.out.println(MSG_2);
+                correcte = scn.hasNextInt();
+                if (correcte) {
+                    edat = scn.nextInt();
+
+                    if (id < 14 || id > 120) {
+                        System.out.println(MSG_6);
+
+
+                    }
+                } else {
+                    scn.next();
+                    System.out.println(MSG_6);
+                    
+                }
+                cont++;
+                if (cont == 3 && edat < 14 || edat > 120) {
+                    System.out.println(MSG_7);
+                }
+            }
+
+        } while (cont < 3 && edat < 14 || edat > 120);
+        
+        
+        
+        
+        
+        
     }
 
 }
