@@ -19,14 +19,10 @@ import java.util.Scanner;
       
  */
 
-/*Pre: Programa que guarda los datos solicitados con un maximo de 3 intentor 
+ /*Pre: Programa que guarda los datos solicitados con un maximo de 3 intentor 
 al introducir los datos*/
-
-
 public class Sorteo {
 
-    
-    
     //DECLARACION DE CONSTANTES
     private static final String MSG_1 = "Id?: ";
     private static final String MSG_2 = "Edat?: ";
@@ -51,20 +47,16 @@ public class Sorteo {
 
     public static void main(String[] args) {
 
-        
-        
         int id = 0, edat = 0, tlf = 0, tipo, cont = 0, imp = 0, aux = 0;
         boolean correcte;
         String out = "";
 
         Scanner scn = new Scanner(System.in);
-        do {                                                       
+        do {
 
-             /*DO PARA PEDIR ID Y QUE EL VALOR INTRODUCIDO SEA UN NUMERO ENTERO
+            /*DO PARA PEDIR ID Y QUE EL VALOR INTRODUCIDO SEA UN NUMERO ENTERO
                     Y ESTE DENTRO DEL RANGO ESTABLECIDO*/
-             
-             
-            if (cont < 3 && id < MIN_ID || id > MAX_ID) {                               
+            if (cont < 3 && id < MIN_ID || id > MAX_ID) {
 
                 System.out.println(MSG_1);
                 correcte = scn.hasNextInt();
@@ -72,7 +64,7 @@ public class Sorteo {
                     id = scn.nextInt();
 
                     if (id < MIN_ID || id > MAX_ID) {
-                        System.out.println(MSG_6);           
+                        System.out.println(MSG_6);
                         id = 0;
                         cont++;
                     }
@@ -88,21 +80,13 @@ public class Sorteo {
                 }
             }
 
-        } while (cont < 3 && id < MIN_ID || id > MAX_ID);    
-  
+        } while (cont < 3 && id < MIN_ID || id > MAX_ID);
+
         /*AQUI EN CASO DE CONTADOR SEA 3 ACABA EL BUCLE CONDICIONAL PARA
             PEDIR UN ID*/
-        
-                
-                
-                
-                
-        
-        /*AQUI VERIFICA QUE SI CONTADOR ES MENOR A 3 PUEDE ENTRAR AL BUCLE DE 
+ /*AQUI VERIFICA QUE SI CONTADOR ES MENOR A 3 PUEDE ENTRAR AL BUCLE DE 
                     PEDIR LA EDAD*/
-        
-        
-        if (cont < 3) {                                      
+        if (cont < 3) {
             cont = 0;
             do {
 
@@ -131,31 +115,24 @@ public class Sorteo {
                     }
                 }
 
-            } while (cont < 3 && edat < MIN_AGE || edat > MAX_AGE);    
-             /*AQUI EN CASO DE CONTADOR SEA 3 ACABA EL BUCLE CONDICIONAL PARA
+            } while (cont < 3 && edat < MIN_AGE || edat > MAX_AGE);
+            /*AQUI EN CASO DE CONTADOR SEA 3 ACABA EL BUCLE CONDICIONAL PARA
             PEDIR UN EDAT*/
-             
-             
-             
-             
-             
+
             if (edat != 0) {
 
-                  
-        /*AQUI VERIFICA QUE SI CONTADOR ES MENOR A 3 PUEDE ENTRAR AL BUCLE DE 
+                /*AQUI VERIFICA QUE SI CONTADOR ES MENOR A 3 PUEDE ENTRAR AL BUCLE DE 
                     PEDIR LA EDAD*/
-         
-                if (cont < 3) {                                        
+                if (cont < 3) {
                     cont = 0;
                     do {
                         System.out.println(MSG_3);
                         correcte = scn.hasNextInt();
                         if (correcte) {
-                            tipo = scn.nextInt();                
-                            
+                            tipo = scn.nextInt();
+
                             /*SI TODO ESTA BIEN QUE GUARDE LA
                             VARIABLE EDAT Y HAGA EL SWITCH*/
-
                             switch (tipo) {
 
                                 case 0:
@@ -185,8 +162,8 @@ public class Sorteo {
                                     break;
                             }
                         }
-                    } while (cont < 3 && aux != 1);                   
-                    
+                    } while (cont < 3 && aux != 1);
+
                     /* EN CASO DE CONTADOR SEA 3 Y AUX SEA DIFERENTE 
                     ACABA EL BUCLE CONDICIONAL PARA PEDIR LA EL TIPO*/
                 }
@@ -194,14 +171,14 @@ public class Sorteo {
 
         }
         // QUE COMPRUEBE EL AUXILIAR Y SI ES CORRECTO QUE HAGA EL BUCLE DEL IMPORTE
-        if (aux == 1) {                                                 
+        if (aux == 1) {
 
             cont = 0;
 
             do {
-                 /*AQUI VERIFICA QUE SI CONTADOR ES MENOR A 3 PUEDE ENTRAR AL BUCLE DE 
+                /*AQUI VERIFICA QUE SI CONTADOR ES MENOR A 3 PUEDE ENTRAR AL BUCLE DE 
                     PEDIR EL IMPORTE*/
-                if (cont < 3 && imp <= MIN_IMP || imp >= MAX_IMP) {   
+                if (cont < 3 && imp <= MIN_IMP || imp >= MAX_IMP) {
 
                     System.out.println(MSG_4);
                     correcte = scn.hasNextInt();
@@ -226,13 +203,13 @@ public class Sorteo {
                     }
                 }
 
-            } while (cont < 3 && imp < MIN_IMP || imp > MAX_IMP);   
+            } while (cont < 3 && imp < MIN_IMP || imp > MAX_IMP);
             /* EN CASO DE CONTADOR SEA 3 ACABA EL BUCLE 
                 CONDICIONAL PARA PEDIR EL IMPORTE*/
         }
 
-        if (cont < 3) { 
-/*AQUI VERIFICA QUE SI CONTADOR ES MENOR A 3 PUEDE
+        if (cont < 3) {
+            /*AQUI VERIFICA QUE SI CONTADOR ES MENOR A 3 PUEDE
         ENTRAR AL BUCLE DE PEDIR LA EDAD*/
             do {
 
@@ -263,12 +240,12 @@ public class Sorteo {
             } while (cont < 3 && tlf < MIN_TLF || tlf > MAX_TLF);
 
             if (cont < 3) {
-   //ESTAS DOS LINEAS SIRVEN PARA PRINTAR LOS RESULTADOS DE LAS VARIABLES
-                System.out.println("\n" + MSG_8);                                                    
-                System.out.println(id + "   " + edat + "    " + out + "      " + imp + "      " + tlf);  
+                //ESTAS DOS LINEAS SIRVEN PARA PRINTAR LOS RESULTADOS DE LAS VARIABLES
+                System.out.println("\n" + MSG_8);
+                System.out.println(id + "   " + edat + "    " + out + "      " + imp + "      " + tlf);
 
             }
-                //
+            //
         }
     }
 
