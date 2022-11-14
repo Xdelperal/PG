@@ -36,6 +36,7 @@ public class Sorteo {
     private static final String MSG_6 = "Error introduzca un valor valido ";
     private static final String MSG_7 = "FINALIZACION DEL PROGRAMA POR ERROR DE DATOS";
     private static final String MSG_8 = "ID   EDAT   TIPO DE VENTA   IMPORTE   TELEFONO";
+    public static final String ANSI_CYAN = "\u001B[36m";
     private static final int MIN_ID = 111;
     private static final int MAX_ID = 999;
     private static final int MIN_AGE = 14;
@@ -47,8 +48,8 @@ public class Sorteo {
 
     public static void main(String[] args) {
 
-        int id = 0, edat = 0, tlf = 0, tipo, cont = 0, imp = 0, aux = 0;
-        boolean correcte;
+        int id = 0, edat = 0, tlf = 0, tipo, cont = 0, imp = 0;
+        boolean correcte,salida=false;
         String out = "";
 
         Scanner scn = new Scanner(System.in);
@@ -137,20 +138,19 @@ public class Sorteo {
 
                                 case 0:
                                     out = TYPE_0;
-                                    aux = 1;
+                                    salida = false;
                                     break;
-
                                 case 1:
                                     out = TYPE_1;
-                                    aux = 1;
+                                    salida = true;
                                     break;
                                 case 2:
                                     out = TYPE_2;
-                                    aux = 1;
+                                    salida = true;
                                     break;
                                 case 3:
                                     out = TYPE_3;
-                                    aux = 1;
+                                    salida = true;
                                     break;
                                 default:
                                     cont++;
@@ -162,7 +162,7 @@ public class Sorteo {
                                     break;
                             }
                         }
-                    } while (cont < 3 && aux != 1);
+                    } while (cont < 3 && salida==false);
 
                     /* EN CASO DE CONTADOR SEA 3 Y AUX SEA DIFERENTE 
                     ACABA EL BUCLE CONDICIONAL PARA PEDIR LA EL TIPO*/
@@ -171,7 +171,7 @@ public class Sorteo {
 
         }
         // QUE COMPRUEBE EL AUXILIAR Y SI ES CORRECTO QUE HAGA EL BUCLE DEL IMPORTE
-        if (aux == 1) {
+        if (salida == false) {
 
             cont = 0;
 
@@ -242,7 +242,7 @@ public class Sorteo {
             if (cont < 3) {
                 //ESTAS DOS LINEAS SIRVEN PARA PRINTAR LOS RESULTADOS DE LAS VARIABLES
                 System.out.println("\n" + MSG_8);
-                System.out.println(id + "   " + edat + "    " + out + "      " + imp + "      " + tlf);
+                System.out.println(id + "   " + edat + "    " + out + "      " + imp + "       " + tlf);
 
             }
             //
