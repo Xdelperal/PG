@@ -171,7 +171,7 @@ public class Sorteo {
 
         }
         // QUE COMPRUEBE EL AUXILIAR Y SI ES CORRECTO QUE HAGA EL BUCLE DEL IMPORTE
-        if (salida == false) {
+        if (salida == true) {
 
             cont = 0;
 
@@ -251,3 +251,4 @@ public class Sorteo {
 
 }
 //Post: El programa muestra los datos que ha ido almacenando en orden
+
