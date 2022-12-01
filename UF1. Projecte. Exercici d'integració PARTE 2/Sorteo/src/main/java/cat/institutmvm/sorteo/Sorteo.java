@@ -35,12 +35,13 @@ public class Sorteo {
     private static final String MSG_5 = "Telefono de contacto?: ";
     private static final String MSG_6 = "Error introduzca un valor valido ";
     private static final String MSG_7 = "FINALIZACION DEL PROGRAMA POR ERROR DE DATOS";
-    private static final String MSG_8 = "ID/tEDAT/tTIPO DE VENTA/tIMPORTE/tTELEFONO";
+    private static final String MSG_8 = "ID\tEDAT\tTIPO DE VENTA\tIMPORTE\tTELEFONO";
     private static final String MSG_9 = "Introduce la cantidad de valores que quieres almacenar";
     private static final String MSG_10 = "Se estan mostrando los resultados de ";
     private static final String MSG_11 = "Vols consultar per tipus de client?(si: 1/ no:0)";
     private static final String MSG_12 = "Saliendo del programa...";
     private static final String MSG_13 = "Quin tipus de client?";
+    private static final String MSG_14 = "ESTOS SON LOS USUARIOS QUE COINCIDEN CON EL FILTRO";
     private static final int MIN_ID = 111;
     private static final int MAX_ID = 999;
     private static final int MIN_AGE = 14;
@@ -52,7 +53,7 @@ public class Sorteo {
 
     public static void main(String[] args) {
 
-        int id = 0, edat = 0, tlf = 0, tipo, cont = 0, imp = 0, lon, i = 0, user = 1, opc;
+        int id = 0, edat = 0, tlf = 0, tipo, cont = 0, imp = 0, lon, i = 0, user = 1, opc, filt;
         boolean correcte, salida = false;
         String out = "";
 
@@ -267,7 +268,9 @@ public class Sorteo {
                 } while (cont < 3 && tlf < MIN_TLF || tlf > MAX_TLF);
             }
             if (cont < 3) {
+                if(user<lon){
                 user++;
+                }
                 i++;
             }
 
@@ -278,7 +281,7 @@ public class Sorteo {
             System.out.println("\n" + MSG_8);
 
             for (i = arrayId.length - 1; i >= 0; i--) {
-                System.out.print(arrayId[i] + "/t" + arrayAge[i] + "/t");
+                System.out.print(arrayId[i] + "\t" + arrayAge[i] + "\t");
 
                 switch (arrayTipo[i]) {
 
@@ -299,12 +302,18 @@ public class Sorteo {
                         break;
 
                 }
-                System.out.print("/t" + arrayImp[i] + "/t" + arrayTlf[i]);
+                System.out.print("\t" + arrayImp[i] + "\t" + arrayTlf[i]);
                 System.out.println("");
             }
+                System.out.println("");
 
             System.out.println(MSG_10 + user + " usuarios");
+            
+            
+                System.out.println("");
+                System.out.println("");
 
+//AQUI ES PARA PREGUNTAR EL TIPO DE CLIENTE
             System.out.println(MSG_11);
 
             correcte = scn.hasNextInt();
@@ -314,11 +323,46 @@ public class Sorteo {
                     case 0:
                         System.out.println(MSG_12);
                         break;
-                        
+
                     case 1:
                         System.out.println(MSG_13);
-                        
-                        //AQUI ES PARA PREGUNTAR EL TIPO DE CLIENTE
+                        correcte = scn.hasNextInt();
+                        if (correcte) {
+                            filt = scn.nextInt();
+                            System.out.println(MSG_14);
+                            System.out.println("\n" + MSG_8);
+                            for (i = arrayId.length - 1; i >= 0; i--) {
+                                System.out.println("");
+                                if (arrayTipo[i] == filt) {
+
+                                    System.out.print(arrayId[i] + "\t" + arrayAge[i] + "\t");
+
+                                    switch (arrayTipo[i]) {
+
+                                        case 0:
+                                            System.out.print(TYPE_0);
+                                            break;
+
+                                        case 1:
+                                            System.out.print(TYPE_1);
+                                            break;
+
+                                        case 2:
+                                            System.out.print(TYPE_2);
+                                            break;
+
+                                        case 3:
+                                            System.out.print(TYPE_3);
+                                            break;
+
+                                    }
+                                    System.out.print("\t" + arrayImp[i] + "\t\t\t" + arrayTlf[i]);
+
+                                }
+                            }
+
+                        }
+
                     
                 }
             }
