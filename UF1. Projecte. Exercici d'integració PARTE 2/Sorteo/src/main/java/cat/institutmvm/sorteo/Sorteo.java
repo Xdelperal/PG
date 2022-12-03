@@ -37,11 +37,15 @@ public class Sorteo {
     private static final String MSG_7 = "FINALIZACION DEL PROGRAMA POR ERROR DE DATOS";
     private static final String MSG_8 = "ID\tEDAT\tTIPO DE VENTA\tIMPORTE\tTELEFONO";
     private static final String MSG_9 = "Introduce la cantidad de valores que quieres almacenar";
-    private static final String MSG_10 = "Se estan mostrando los resultados de ";
     private static final String MSG_11 = "Vols consultar per tipus de client?(si: 1/ no:0)";
+    private static final String MSG_11_1 = "Quieres un resumen estadistico? (si: 1/ no:0)";
     private static final String MSG_12 = "Saliendo del programa...";
     private static final String MSG_13 = "Quin tipus de client?";
     private static final String MSG_14 = "ESTOS SON LOS USUARIOS QUE COINCIDEN CON EL FILTRO";
+    private static final String MSG_15 = "Numero de clientes introducidos: ";
+    private static final String MSG_16 = "Histograma de clientes por tipos";
+    private static final String MSG_17 = "Importe total acumulado: ";
+    private static final String MSG_18 = "Numero de clients per tipus";
     private static final int MIN_ID = 111;
     private static final int MAX_ID = 999;
     private static final int MIN_AGE = 14;
@@ -53,12 +57,13 @@ public class Sorteo {
 
     public static void main(String[] args) {
 
-        int id = 0, edat = 0, tlf = 0, tipo, cont = 0, imp = 0, lon, i = 0, user = 1, opc, filt;
+        int id = 0, edat = 0, tlf = 0, tipo, cont = 0, imp = 0, lon, i = 0, user = 1, opc, filt, total = 0;
         boolean correcte, salida = false;
-        String out = "";
+        String out = "", msg_0 = "", msg_1 = "", msg_2 = "", msg_3 = "";
 
         Scanner scn = new Scanner(System.in);
         System.out.println(MSG_9);
+        int[] arrayUser = new int[4];
 
         lon = scn.nextInt();
         int[] arrayId = new int[lon];
@@ -268,8 +273,8 @@ public class Sorteo {
                 } while (cont < 3 && tlf < MIN_TLF || tlf > MAX_TLF);
             }
             if (cont < 3) {
-                if(user<lon){
-                user++;
+                if (user < lon) {
+                    user++;
                 }
                 i++;
             }
@@ -305,13 +310,9 @@ public class Sorteo {
                 System.out.print("\t" + arrayImp[i] + "\t" + arrayTlf[i]);
                 System.out.println("");
             }
-                System.out.println("");
-
-            System.out.println(MSG_10 + user + " usuarios");
-            
-            
-                System.out.println("");
-                System.out.println("");
+            System.out.println("");
+            System.out.println("");
+            System.out.println("");
 
 //AQUI ES PARA PREGUNTAR EL TIPO DE CLIENTE
             System.out.println(MSG_11);
@@ -363,13 +364,118 @@ public class Sorteo {
 
                         }
 
-                    
+                        System.out.println("");
+                        System.out.println("");
+                        System.out.println("");
+                        System.out.println("");
+
+                        System.out.println(MSG_11_1);
+                        correcte = scn.hasNextInt();
+                        if (correcte) {
+                            opc = scn.nextInt();
+                            switch (opc) {
+                                case 0:
+                                    System.out.println(MSG_12);
+                                    break;
+
+                                case 1:
+                                    System.out.println("");
+                                    System.out.println(MSG_15 + user);
+                                    for (i = arrayId.length - 1; i >= 0; i--) {
+                                        total += arrayImp[i];
+                                    }
+                                    System.out.println(MSG_17 + total + "€");
+                                    System.out.println("");
+                                    System.out.println("");
+                                    System.out.println("");
+                                    System.out.println(MSG_18);
+                                    System.out.println("");
+                                    System.out.println("");
+                                    for (i = arrayId.length - 1; i >= 0; i--) {
+                                        switch (arrayTipo[i]) {
+
+                                            case 0:
+                                                arrayUser[0] += 1;
+                                                break;
+
+                                            case 1:
+                                                arrayUser[1] += 1;
+                                                break;
+
+                                            case 2:
+                                                arrayUser[2] += 1;
+                                                break;
+
+                                            case 3:
+                                                arrayUser[3] += 1;
+                                                break;
+
+                                        }
+
+                                    }
+                                    
+                                    
+                                    
+                                    
+                                    
+                                    for (i = arrayUser.length -1; i >= 0; i--){
+                                        if (arrayUser[i]!=0){
+                                        
+                                            
+                                             switch (arrayUser[i]) {
+
+                                            case 0:
+                                            System.out.print(TYPE_0 +": ");
+                                            System.out.println(arrayUser[0]);
+                                                break;
+
+                                            case 1:
+                                            System.out.print(TYPE_1 + ": ");
+                                            System.out.println(arrayUser[1]);
+                                                break;
+
+                                            case 2:
+                                            System.out.print(TYPE_2 + ": ");    
+                                            System.out.println(arrayUser[2]);
+                                                break;
+
+                                            case 3:
+                                            System.out.print(TYPE_3 + ": ");    
+                                            System.out.println(arrayUser[3]);
+                                                break;
+
+                                        }
+                                             
+                                             
+                                        }
+                                    
+                                    }
+                                    
+                                    
+                                    
+                                    
+                                    
+                                    
+                                    
+                                    
+                                    
+                                    
+                                    
+                                    System.out.println("-----------------------");
+                                    System.out.println(MSG_16);
+                                    System.out.println("");
+                                    System.out.println("");
+                                    
+                                 
+                                    
+                            }
+
+                        }
                 }
             }
         }
+        //
     }
-    //
 }
-
 //Post: El programa muestra los datos que ha ido almacenando en orden
 
