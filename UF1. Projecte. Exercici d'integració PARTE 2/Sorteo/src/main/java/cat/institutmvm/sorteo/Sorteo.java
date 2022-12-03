@@ -64,6 +64,7 @@ public class Sorteo {
         Scanner scn = new Scanner(System.in);
         System.out.println(MSG_9);
         int[] arrayUser = new int[4];
+        int[] UserCheck = new int[4];
 
         lon = scn.nextInt();
         int[] arrayId = new int[lon];
@@ -240,8 +241,7 @@ public class Sorteo {
             }
 
             if (cont < 3) {
-                /*AQUI VERIFICA QUE SI CONTADOR ES MENOR A 3 PUEDE
-        ENTRAR AL BUCLE DE PEDIR LA EDAD*/
+
                 do {
                     tlf = 0;
 
@@ -282,7 +282,7 @@ public class Sorteo {
         } while (i != arrayId.length && cont < 3);
 
         if (cont < 3) {
-            //ESTAS DOS LINEAS SIRVEN PARA PRINTAR LOS RESULTADOS DE LAS VARIABLES
+            //ESTE SWITCH SIRVE PARA PRINTAR LOS RESULTADOS DE LAS VARIABLES
             System.out.println("\n" + MSG_8);
 
             for (i = arrayId.length - 1; i >= 0; i--) {
@@ -335,6 +335,8 @@ public class Sorteo {
                             for (i = arrayId.length - 1; i >= 0; i--) {
                                 System.out.println("");
                                 if (arrayTipo[i] == filt) {
+                                    
+//Printa los resultados del filtro
 
                                     System.out.print(arrayId[i] + "\t" + arrayAge[i] + "\t");
 
@@ -368,9 +370,10 @@ public class Sorteo {
                         System.out.println("");
                         System.out.println("");
                         System.out.println("");
-
                         System.out.println(MSG_11_1);
+
                         correcte = scn.hasNextInt();
+
                         if (correcte) {
                             opc = scn.nextInt();
                             switch (opc) {
@@ -378,6 +381,7 @@ public class Sorteo {
                                     System.out.println(MSG_12);
                                     break;
 
+//En caso de querer el resumen estadistico calcula el total  y almacena la cantida de usuarios de cada tipo
                                 case 1:
                                     System.out.println("");
                                     System.out.println(MSG_15 + user);
@@ -396,77 +400,79 @@ public class Sorteo {
 
                                             case 0:
                                                 arrayUser[0] += 1;
+                                                UserCheck[0] = 0;
                                                 break;
 
                                             case 1:
                                                 arrayUser[1] += 1;
+                                                UserCheck[1] = 1;
                                                 break;
 
                                             case 2:
                                                 arrayUser[2] += 1;
+                                                UserCheck[2] = 2;
+
                                                 break;
 
                                             case 3:
                                                 arrayUser[3] += 1;
+                                                UserCheck[3] = 3;
+
                                                 break;
 
                                         }
 
                                     }
-                                    
-                                    
-                                    
-                                    
-                                    
-                                    for (i = arrayUser.length -1; i >= 0; i--){
-                                        if (arrayUser[i]!=0){
-                                        
-                                            
-                                             switch (arrayUser[i]) {
+//Comprrueba y printa la cantidad de usuarios y de que tipo son
+                                    for (i = arrayUser.length - 1; i >= 0; i--) {
+                                        if (arrayUser[i] != 0) {
 
-                                            case 0:
-                                            System.out.print(TYPE_0 +": ");
-                                            System.out.println(arrayUser[0]);
-                                                break;
+                                            switch (UserCheck[i]) {
 
-                                            case 1:
-                                            System.out.print(TYPE_1 + ": ");
-                                            System.out.println(arrayUser[1]);
-                                                break;
+                                                case 0:
+                                                    System.out.print(TYPE_0 + ": ");
+                                                    System.out.println(arrayUser[0]);
+                                                    break;
 
-                                            case 2:
-                                            System.out.print(TYPE_2 + ": ");    
-                                            System.out.println(arrayUser[2]);
-                                                break;
+                                                case 1:
+                                                    System.out.print(TYPE_1 + ": ");
+                                                    System.out.println(arrayUser[1]);
+                                                    break;
 
-                                            case 3:
-                                            System.out.print(TYPE_3 + ": ");    
-                                            System.out.println(arrayUser[3]);
-                                                break;
+                                                case 2:
+                                                    System.out.print(TYPE_2 + ": ");
+                                                    System.out.println(arrayUser[2]);
+                                                    break;
+
+                                                case 3:
+                                                    System.out.print(TYPE_3 + ": ");
+                                                    System.out.println(arrayUser[3]);
+                                                    break;
+
+                                            }
 
                                         }
-                                             
-                                             
-                                        }
-                                    
+
                                     }
-                                    
-                                    
-                                    
-                                    
-                                    
-                                    
-                                    
-                                    
-                                    
-                                    
-                                    
+
                                     System.out.println("-----------------------");
                                     System.out.println(MSG_16);
                                     System.out.println("");
                                     System.out.println("");
+                                   
+                                           
+                                           //INTENTO HISTOGRAMA
+                                    for (i=arrayUser.length){
+                                    for(i=arrayUser.length;i>=0;i--){
                                     
-                                 
+                                    
+                                    }
+                                    
+                                    }
+                                    
+                                    
+                                    
+                                    
                                     
                             }
 
