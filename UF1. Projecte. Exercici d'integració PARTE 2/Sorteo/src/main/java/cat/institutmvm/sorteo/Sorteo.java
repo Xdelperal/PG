@@ -464,7 +464,7 @@ public class Sorteo {
                                            //INTENTO HISTOGRAMA
                                     for (i=arrayUser.length){
                                     for(i=arrayUser.length;i>=0;i--){
-                                    
+                                        System.out.print("*");
                                     
                                     }
                                     
