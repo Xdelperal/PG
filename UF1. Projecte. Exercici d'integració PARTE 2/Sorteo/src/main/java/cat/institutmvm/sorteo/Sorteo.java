@@ -462,14 +462,63 @@ public class Sorteo {
                                    
                                            
                                            //INTENTO HISTOGRAMA
-                                    for (i=arrayUser.length){
-                                    for(i=arrayUser.length;i>=0;i--){
-                                        System.out.print("*");
-                                    
+                                   for (i = arrayId.length - 1; i >= 0; i--) {
+                                        switch (arrayTipo[i]) {
+
+                                            case 0:
+                                                arrayHisto[0] = arrayHisto[0] += "*";
+                                                break;
+
+                                            case 1:
+                                                arrayHisto[1] = arrayHisto[1] += "*";
+                                                break;
+
+                                            case 2:
+                                                arrayHisto[2] = arrayHisto[2] += "*";
+                                                break;
+
+                                            case 3:
+                                                arrayHisto[3] = arrayHisto[3] += "*";
+                                                break;
+
+                                        }
+
                                     }
-                                    
+
+                                    for (i = arrayUser.length - 1; i >= 0; i--) {
+                                        if (arrayUser[i] != 0) {
+
+                                            switch (UserCheck[i]) {
+
+                                                case 0:
+                                                    System.out.print(TYPE_0 + ": ");
+                                                    System.out.println(arrayHisto[0]);
+                                                    break;
+
+                                                case 1:
+                                                    System.out.print(TYPE_1 + ": ");
+                                                    System.out.println(arrayHisto[1]);
+                                                    break;
+
+                                                case 2:
+                                                    System.out.print(TYPE_2 + ": ");
+                                                    System.out.println(arrayHisto[2]);
+                                                    break;
+
+                                                case 3:
+                                                    System.out.print(TYPE_3 + ": ");
+                                                    System.out.println(arrayHisto[3]);
+                                                    break;
+
+                                                default:
+                                                    System.out.println("");
+                                                    System.out.println(MSG_19);
+
+                                            }
+
+                                        }
+
                                     }
-                                    
                                     
                                     
                                     
