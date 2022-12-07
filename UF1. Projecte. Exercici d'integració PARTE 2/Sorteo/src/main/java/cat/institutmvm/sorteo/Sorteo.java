@@ -46,6 +46,9 @@ public class Sorteo {
     private static final String MSG_16 = "Histograma de clientes por tipos";
     private static final String MSG_17 = "Importe total acumulado: ";
     private static final String MSG_18 = "Numero de clients per tipus";
+    private static final String MSG_19 = "NO HAY USUARIOS QUE COINCIDAN CON ESTE TIPO DE USUARIO";
+    public static final String ANSI_RED = "\u001B[31m";
+
     private static final int MIN_ID = 111;
     private static final int MAX_ID = 999;
     private static final int MIN_AGE = 14;
@@ -57,21 +60,44 @@ public class Sorteo {
 
     public static void main(String[] args) {
 
-        int id = 0, edat = 0, tlf = 0, tipo, cont = 0, imp = 0, lon, i = 0, user = 1, opc, filt, total = 0;
+        int id = 0, edat = 0, tlf = 0, tipo, cont = 0, imp = 0, lon = 0, i = 0, user = 1, opc, filt, total = 0;
         boolean correcte, salida = false;
-        String out = "", msg_0 = "", msg_1 = "", msg_2 = "", msg_3 = "";
+        String out = "", msg_0 = "", msg_1 = "", msg_2 = "", msg_3 = "", histo = "*";
 
         Scanner scn = new Scanner(System.in);
-        System.out.println(MSG_9);
+
         int[] arrayUser = new int[4];
         int[] UserCheck = new int[4];
+        String[] arrayHisto = new String[4];
+        arrayHisto[0] = "";
+        arrayHisto[1] = "";
+        arrayHisto[2] = "";
+        arrayHisto[3] = "";
 
-        lon = scn.nextInt();
-        int[] arrayId = new int[lon];
-        int[] arrayAge = new int[lon];
-        int[] arrayTipo = new int[lon];
-        int[] arrayImp = new int[lon];
-        int[] arrayTlf = new int[lon];
+    
+        
+        
+        
+        
+           do{
+                System.out.println(MSG_15);
+                correcte = scn.hasNextInt();
+                if(correcte){
+                    lon = scn.nextInt();
+                }
+                else{
+                    scn.next();
+                    System.out.println("Error");
+                }
+            }while(!correcte);
+         
+         
+        
+             int[] arrayId = new int[lon];
+             int[] arrayAge = new int[lon];
+             int[] arrayTipo = new int[lon];
+             int[] arrayImp = new int[lon];
+             int[] arrayTlf = new int[lon];
 
         do {
             System.out.println("");
