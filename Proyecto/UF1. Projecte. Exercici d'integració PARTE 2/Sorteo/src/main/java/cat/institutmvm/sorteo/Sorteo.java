@@ -70,17 +70,20 @@ public class Sorteo {
         arrayHisto[2] = "";
         arrayHisto[3] = "";
 
-        do {
+        while(lon<=0){
+            do{
             System.out.println(MSG_9);
 
             correcte = scn.hasNextInt();
+            
             if (correcte) {
                 lon = scn.nextInt();
             } else {
                 scn.next();
                 System.out.println(MSG_6);
             }
-        } while (!correcte);
+            } while(!correcte);
+        }
 
         int[] arrayId = new int[lon];
         int[] arrayAge = new int[lon];
@@ -99,7 +102,8 @@ public class Sorteo {
                     Y ESTE DENTRO DEL RANGO ESTABLECIDO*/
                     System.out.println(MSG_1 + user);
                     id = 0;
-                    if (cont < 3 && id < MIN_ID || id > MAX_ID) {
+                    if (cont < 3){
+                        if(id < MIN_ID && id > MAX_ID) {
                         correcte = scn.hasNextInt();
 
                         if (correcte) {
@@ -112,7 +116,7 @@ public class Sorteo {
                             id = 0;
                             cont++;
                         }
-                    } else {
+                    }} else {
                         scn.next();
                         System.out.println(MSG_6);
                         id = 0;
@@ -138,13 +142,13 @@ public class Sorteo {
 
                     if (cont == 3 && seguiment == 0) {
                         finaliza = true;
-                        break;
+                        exit = true;
                     }
                     if (seguiment == 1) {
                         cont = 0;
                     }
 
-                } while (cont < 3 && id < MIN_ID || id > MAX_ID && exit == false);
+                } while (cont < 3 && exit == false && id < MIN_ID || id > MAX_ID );
                 /*AQUI EN CASO DE CONTADOR SEA 3 ACABA EL BUCLE CONDICIONAL PARA
             PEDIR UN ID*/
  /*AQUI VERIFICA QUE SI CONTADOR ES MENOR A 3 PUEDE ENTRAR AL BUCLE DE 
@@ -195,7 +199,7 @@ public class Sorteo {
 
                             if (cont == 3 && seguiment == 0) {
                                 finaliza = true;
-                                break;
+                                exit = true;
                             }
                             if (seguiment == 1) {
                                 cont = 0;
@@ -203,7 +207,7 @@ public class Sorteo {
 
                         }
 
-                    } while (cont < 3 && edat < MIN_AGE || edat > MAX_AGE);
+                    } while (cont < 3 && exit==false && edat < MIN_AGE || edat > MAX_AGE);
                     /*AQUI EN CASO DE CONTADOR SEA 3 ACABA EL BUCLE CONDICIONAL PARA
             PEDIR UN EDAT*/
                     if (edat != 0) {
@@ -276,14 +280,14 @@ public class Sorteo {
 
                                 if (cont == 3 && seguiment == 0) {
                                     finaliza = true;
-                                    break;
+                                    exit=true;
                                 }
                                 if (seguiment == 1) {
                                     cont = 0;
                                     salida = false;
                                 }
 
-                            } while (salida != true);
+                            } while (salida != true && salida==false);
 
                             /* EN CASO DE CONTADOR SEA 3 Y AUX SEA DIFERENTE 
                     ACABA EL BUCLE CONDICIONAL PARA PEDIR LA EL TIPO*/
@@ -338,14 +342,15 @@ public class Sorteo {
 
                             if (cont == 3 && seguiment == 0) {
                                 finaliza = true;
-                                break;
+                                exit=true;
+                                
                             }
                             if (seguiment == 1) {
                                 cont = 0;
                             }
 
                         }
-                    } while (cont < 3 && imp < MIN_IMP || imp > MAX_IMP);
+                    } while (cont < 3 && exit==false && imp < MIN_IMP || imp > MAX_IMP);
                     /* EN CASO DE CONTADOR SEA 3 ACABA EL BUCLE 
                 CONDICIONAL PARA PEDIR EL IMPORTE*/
                 }
@@ -391,7 +396,7 @@ public class Sorteo {
 
                             if (cont == 3 && seguiment == 0) {
                                 finaliza = true;
-                                break;
+                               exit=true;
                             }
                             if (seguiment == 1) {
                                 cont = 0;
@@ -399,7 +404,7 @@ public class Sorteo {
 
                         }
 
-                    } while (cont < 3 && tlf < MIN_TLF || tlf > MAX_TLF);
+                    } while (cont < 3 && exit==false && tlf < MIN_TLF || tlf > MAX_TLF );
                 }
                 if (cont < 3) {
                     if (user < lon) {
