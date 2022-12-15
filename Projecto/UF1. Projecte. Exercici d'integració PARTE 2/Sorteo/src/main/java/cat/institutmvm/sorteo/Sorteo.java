@@ -70,20 +70,20 @@ public class Sorteo {
         arrayHisto[2] = "";
         arrayHisto[3] = "";
 
-        while(lon<=0){
-            do{
+        do {
             System.out.println(MSG_9);
-
             correcte = scn.hasNextInt();
-            
             if (correcte) {
                 lon = scn.nextInt();
+                if(lon<=0){
+                correcte=!correcte;
+            } 
+                
             } else {
                 scn.next();
                 System.out.println(MSG_6);
             }
-            } while(!correcte);
-        }
+        } while (!correcte);
 
         int[] arrayId = new int[lon];
         int[] arrayAge = new int[lon];
@@ -102,25 +102,26 @@ public class Sorteo {
                     Y ESTE DENTRO DEL RANGO ESTABLECIDO*/
                     System.out.println(MSG_1 + user);
                     id = 0;
-                    if (cont < 3){
-                        if(id < MIN_ID && id > MAX_ID) {
+                    if (cont < 3 && id < MIN_ID || id > MAX_ID) {
                         correcte = scn.hasNextInt();
 
                         if (correcte) {
                             id = 0;
                             id = scn.nextInt();
                             arrayId[i] = id;
-                        }
-                        if (id < MIN_ID || id > MAX_ID) {
+                            
+                          if (id < MIN_ID || id > MAX_ID) {
                             System.out.println(MSG_6);
                             id = 0;
                             cont++;
                         }
-                    }} else {
+                    } else {
                         scn.next();
                         System.out.println(MSG_6);
                         id = 0;
                     }
+                        }
+                       
 
                     if (cont == 3) {
                         System.out.println(MSG_11_2);
@@ -130,25 +131,27 @@ public class Sorteo {
                                 seguiment = scn.nextInt();
                                 if (seguiment == 1 || seguiment == 0) {
                                     finaliza = true;
+                                    
+                                    if (cont == 3 && seguiment == 0) {
+                                     finaliza = true; 
+                                    }
+                                    
+                                    else if(seguiment == 1) {
+                                    cont = 0;
+                                    }
+                                    
                                 } else {
                                     System.out.println(MSG_7);
                                 }
                             } else {
                                 scn.next();
-                                System.out.println(MSG_7);
+                                System.out.println(MSG_6);
                             }
                         } while (!correcte && exit != true);
                     }
+                    
 
-                    if (cont == 3 && seguiment == 0) {
-                        finaliza = true;
-                        exit = true;
-                    }
-                    if (seguiment == 1) {
-                        cont = 0;
-                    }
-
-                } while (cont < 3 && exit == false && id < MIN_ID || id > MAX_ID );
+                } while (cont < 3 && id < MIN_ID || id > MAX_ID && exit == false);
                 /*AQUI EN CASO DE CONTADOR SEA 3 ACABA EL BUCLE CONDICIONAL PARA
             PEDIR UN ID*/
  /*AQUI VERIFICA QUE SI CONTADOR ES MENOR A 3 PUEDE ENTRAR AL BUCLE DE 
@@ -166,6 +169,17 @@ public class Sorteo {
                             if (correcte) {
                                 edat = scn.nextInt();
                                 arrayAge[i] = edat;
+                                
+                                
+                                
+                                
+                                
+                                
+                                
+                                
+                                
+                                
+                                
 
                                 if (edat < MIN_AGE || edat > MAX_AGE) {
                                     System.out.println(MSG_6);
@@ -180,34 +194,35 @@ public class Sorteo {
                             }
 
                             if (cont == 3) {
-                                System.out.println(MSG_11_2);
-                                do {
-                                    correcte = scn.hasNextInt();
-                                    if (correcte) {
-                                        seguiment = scn.nextInt();
-                                        if (seguiment == 1 || seguiment == 0) {
-                                            finaliza = true;
-                                        } else {
-                                            System.out.println(MSG_7);
-                                        }
-                                    } else {
-                                        scn.next();
-                                        System.out.println(MSG_7);
+                        System.out.println(MSG_11_2);
+                        do {
+                            correcte = scn.hasNextInt();
+                            if (correcte) {
+                                seguiment = scn.nextInt();
+                                if (seguiment == 1 || seguiment == 0) {
+                                    finaliza = true;
+                                    
+                                    if (cont == 3 && seguiment == 0) {
+                                     finaliza = true; 
                                     }
-                                } while (!correcte && exit != true);
+                                    
+                                    else if(seguiment == 1) {
+                                    cont = 0;
+                                    }
+                                    
+                                } else {
+                                    System.out.println(MSG_7);
+                                }
+                            } else {
+                                scn.next();
+                                System.out.println(MSG_6);
                             }
-
-                            if (cont == 3 && seguiment == 0) {
-                                finaliza = true;
-                                exit = true;
-                            }
-                            if (seguiment == 1) {
-                                cont = 0;
-                            }
+                        } while (!correcte && exit != true);
+                    }
 
                         }
 
-                    } while (cont < 3 && exit==false && edat < MIN_AGE || edat > MAX_AGE);
+                    } while (cont < 3 && edat < MIN_AGE || edat > MAX_AGE);
                     /*AQUI EN CASO DE CONTADOR SEA 3 ACABA EL BUCLE CONDICIONAL PARA
             PEDIR UN EDAT*/
                     if (edat != 0) {
@@ -261,33 +276,34 @@ public class Sorteo {
                                 }
 
                                 if (cont == 3) {
-                                    System.out.println(MSG_11_2);
-                                    do {
-                                        correcte = scn.hasNextInt();
-                                        if (correcte) {
-                                            seguiment = scn.nextInt();
-                                            if (seguiment == 1 || seguiment == 0) {
-                                                finaliza = true;
-                                            } else {
-                                                System.out.println(MSG_7);
-                                            }
-                                        } else {
-                                            scn.next();
-                                            System.out.println(MSG_7);
-                                        }
-                                    } while (!correcte && exit != true);
-                                }
-
-                                if (cont == 3 && seguiment == 0) {
+                        System.out.println(MSG_11_2);
+                        do {
+                            correcte = scn.hasNextInt();
+                            if (correcte) {
+                                seguiment = scn.nextInt();
+                                if (seguiment == 1 || seguiment == 0) {
                                     finaliza = true;
-                                    exit=true;
-                                }
-                                if (seguiment == 1) {
+                                    
+                                    if (cont == 3 && seguiment == 0) {
+                                     finaliza = true; 
+                                    }
+                                    
+                                    else if(seguiment == 1) {
                                     cont = 0;
-                                    salida = false;
+                                    }
+                                    
+                                } else {
+                                    System.out.println(MSG_7);
                                 }
-
-                            } while (salida != true && salida==false);
+                            } else {
+                                scn.next();
+                                System.out.println(MSG_6);
+                            }
+                        } while (!correcte && exit != true);
+                    }
+       
+                                
+                            } while (salida != true);
 
                             /* EN CASO DE CONTADOR SEA 3 Y AUX SEA DIFERENTE 
                     ACABA EL BUCLE CONDICIONAL PARA PEDIR LA EL TIPO*/
@@ -322,35 +338,35 @@ public class Sorteo {
                                 cont++;
                             }
 
-                            if (cont == 3) {
-                                System.out.println(MSG_11_2);
-                                do {
-                                    correcte = scn.hasNextInt();
-                                    if (correcte) {
-                                        seguiment = scn.nextInt();
-                                        if (seguiment == 1 || seguiment == 0) {
-                                            finaliza = true;
-                                        } else {
-                                            System.out.println(MSG_7);
-                                        }
-                                    } else {
-                                        scn.next();
-                                        System.out.println(MSG_7);
+                          if (cont == 3) {
+                        System.out.println(MSG_11_2);
+                        do {
+                            correcte = scn.hasNextInt();
+                            if (correcte) {
+                                seguiment = scn.nextInt();
+                                if (seguiment == 1 || seguiment == 0) {
+                                    finaliza = true;
+                                    
+                                    if (cont == 3 && seguiment == 0) {
+                                     finaliza = true; 
                                     }
-                                } while (!correcte && exit != true);
+                                    
+                                    else if(seguiment == 1) {
+                                    cont = 0;
+                                    }
+                                    
+                                } else {
+                                    System.out.println(MSG_7);
+                                }
+                            } else {
+                                scn.next();
+                                System.out.println(MSG_6);
                             }
-
-                            if (cont == 3 && seguiment == 0) {
-                                finaliza = true;
-                                exit=true;
-                                
-                            }
-                            if (seguiment == 1) {
-                                cont = 0;
-                            }
+                        } while (!correcte && exit != true);
+                    }
 
                         }
-                    } while (cont < 3 && exit==false && imp < MIN_IMP || imp > MAX_IMP);
+                    } while (cont < 3 && imp < MIN_IMP || imp > MAX_IMP);
                     /* EN CASO DE CONTADOR SEA 3 ACABA EL BUCLE 
                 CONDICIONAL PARA PEDIR EL IMPORTE*/
                 }
@@ -377,34 +393,35 @@ public class Sorteo {
                             }
 
                             if (cont == 3) {
-                                System.out.println(MSG_11_2);
-                                do {
-                                    correcte = scn.hasNextInt();
-                                    if (correcte) {
-                                        seguiment = scn.nextInt();
-                                        if (seguiment == 1 || seguiment == 0) {
-                                            finaliza = true;
-                                        } else {
-                                            System.out.println(MSG_7);
-                                        }
-                                    } else {
-                                        scn.next();
-                                        System.out.println(MSG_7);
+                        System.out.println(MSG_11_2);
+                        do {
+                            correcte = scn.hasNextInt();
+                            if (correcte) {
+                                seguiment = scn.nextInt();
+                                if (seguiment == 1 || seguiment == 0) {
+                                    finaliza = true;
+                                    
+                                    if (cont == 3 && seguiment == 0) {
+                                     finaliza = true; 
                                     }
-                                } while (!correcte && exit != true);
+                                    
+                                    else if(seguiment == 1) {
+                                    cont = 0;
+                                    }
+                                    
+                                } else {
+                                    System.out.println(MSG_7);
+                                }
+                            } else {
+                                scn.next();
+                                System.out.println(MSG_6);
                             }
-
-                            if (cont == 3 && seguiment == 0) {
-                                finaliza = true;
-                               exit=true;
-                            }
-                            if (seguiment == 1) {
-                                cont = 0;
-                            }
+                        } while (!correcte && exit != true);
+                    }
 
                         }
 
-                    } while (cont < 3 && exit==false && tlf < MIN_TLF || tlf > MAX_TLF );
+                    } while (cont < 3 && tlf < MIN_TLF || tlf > MAX_TLF);
                 }
                 if (cont < 3) {
                     if (user < lon) {
@@ -416,10 +433,35 @@ public class Sorteo {
 
         } while (finaliza = false);
 
-        if (cont < 3) {
+      //  if (cont < 3) {
             //ESTE SWITCH SIRVE PARA PRINTAR LOS RESULTADOS DE LAS VARIABLES
             System.out.println("\n" + MSG_8);
             for (i = arrayId.length - 1; i >= 0; i--) {
+                
+                   if(arrayId[i]>MIN_ID && arrayId[i]<MAX_ID){
+
+                    for (int j = i - 1; j >= arrayAge.length ; j--) {
+                        if (arrayAge[i] > arrayAge[j]) {
+                            int canvi = arrayAge[i];
+                            arrayAge[i] = arrayAge[j];
+                            arrayAge[j] = canvi;
+                            canvi = arrayId[i];
+                            arrayId[i] = arrayId[j];
+                            arrayId[j] = canvi;
+                            canvi = arrayTipo[i];
+                            arrayTipo[i] = arrayTipo[j];
+                            arrayTipo[j] = canvi;
+                            canvi = arrayImp[i];
+                            arrayImp[i] = arrayImp[j];
+                            arrayImp[j] = canvi;
+                            canvi = arrayTlf[i];
+                            arrayTlf[i] = arrayTlf[j];
+                            arrayTlf[j] = canvi;
+                        }
+                    }
+                
+                 
+                
                 System.out.print(arrayId[i] + "\t" + arrayAge[i] + "\t");
                 switch (arrayTipo[i]) {
                     case 0:
@@ -437,6 +479,10 @@ public class Sorteo {
                 }
                 System.out.print("\t" + arrayImp[i] + "\t" + arrayTlf[i]);
                 System.out.println("");
+                
+                
+                   }
+                
             }
             System.out.println("");
             System.out.println("");
@@ -459,7 +505,13 @@ public class Sorteo {
                             filt = scn.nextInt();
                             System.out.println(MSG_14);
                             System.out.println("\n" + MSG_8);
+                            
+                            
                             for (i = arrayId.length - 1; i >= 0; i--) {
+                                
+                                if(arrayId[i]>MIN_ID || arrayId[i]<MAX_ID){
+                                
+                                
                                 System.out.println("");
                                 if (arrayTipo[i] == filt) {
 
@@ -481,6 +533,11 @@ public class Sorteo {
                                     }
                                     System.out.print("\t" + arrayImp[i] + "\t\t\t" + arrayTlf[i]);
                                 }
+                                
+                                
+                            }
+                                
+                                
                             }
                         }
                         System.out.println("");
@@ -501,9 +558,30 @@ public class Sorteo {
                                     System.out.println(MSG_15 + user);
                                     System.out.println("");
 
+                                    
+                                    
+                                    
+                                    
                                     for (i = arrayAge.length - 1; i >= 0; i--) {
-                                        total += arrayAge[i] / arrayAge.length;
+                                       
+                                        
+                                        if (edat > MIN_AGE && edat < MAX_AGE) {
+
+                                        
+                                        total += arrayAge[i];
+                                        arrayAge[i]++;
+                                        total = arrayAge[i] / arrayAge.length;
+                                        
                                     }
+                                        
+                                        else{lon--;}   
+                                        
+                                        
+                                        
+                                    }  
+                                        
+                                        
+                                        
                                     System.out.println("-----------------------");
                                     System.out.println(MSG_20 + total + " años");
                                     System.out.println("-----------------------");
@@ -513,6 +591,7 @@ public class Sorteo {
                                     System.out.println("");
 
                                     for (i = arrayId.length - 1; i >= 0; i--) {
+                                        
                                         total += arrayImp[i];
                                     }
                                     System.out.println(MSG_17 + total + "€");
@@ -526,6 +605,11 @@ public class Sorteo {
                                     System.out.println("");
                                     System.out.println("");
                                     for (i = arrayId.length - 1; i >= 0; i--) {
+                                       
+
+                                    if(arrayId[i]>MIN_ID && arrayId[i]<MAX_ID){
+                                        
+                                        
                                         switch (arrayTipo[i]) {
                                             case 0:
                                                 arrayUser[0] += 1;
@@ -544,6 +628,11 @@ public class Sorteo {
                                                 UserCheck[3] = 3;
                                                 break;
                                         }
+                                        
+                                        
+                                    } 
+                                        
+                                        
                                     }
 //Comprueba y printa la cantidad de usuarios y de que tipo son
                                     for (i = arrayUser.length - 1; i >= 0; i--) {
@@ -579,6 +668,14 @@ public class Sorteo {
 
                                     // HISTOGRAMA
                                     for (i = arrayId.length - 1; i >= 0; i--) {
+                                        
+                                        
+                                        
+                                        if(arrayId[i]>MIN_ID && arrayId[i]<MAX_ID){
+                                        
+                                        
+                                        
+                                        
                                         switch (arrayTipo[i]) {
 
                                             case 0:
@@ -598,6 +695,9 @@ public class Sorteo {
                                                 break;
 
                                         }
+                                        
+                                        
+                                    }
 
                                     }
 
@@ -640,8 +740,11 @@ public class Sorteo {
                         }
                 }
             }
-        }
-        //
+        //}
+        
     }
 }
 //Post: El programa muestra los datos que ha ido almacenando en orden
+
+
+
