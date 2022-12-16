@@ -561,26 +561,17 @@ public class Sorteo {
                                     
                                     
                                     
-                                    
-                                    for (i = arrayAge.length - 1; i >= 0; i--) {
-                                       
-                                        
-                                        if (edat > MIN_AGE && edat < MAX_AGE) {
+                                             int sum = 0;
+                                                 int count = 0;
+                                                 for (i = 0; i < arrayAge.length; i++) {
+                                                     if (arrayAge[i] > 14 && arrayAge[i]<120) {
+                                                         sum += arrayAge[i];
+                                                         count++;
+                                                     }
+                                                 }
+                                                  total = sum /count;  
 
-                                        
-                                        total += arrayAge[i];
-                                        arrayAge[i]++;
-                                        total = arrayAge[i] / arrayAge.length;
-                                        
-                                    }
-                                        
-                                        else{lon--;}   
-                                        
-                                        
-                                        
-                                    }  
-                                        
-                                        
+
                                         
                                     System.out.println("-----------------------");
                                     System.out.println(MSG_20 + total + " años");
